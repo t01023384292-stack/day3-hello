@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
+  <meta name="description" content="동기부여와 기회를 제공하는 포트폴리오. 카카오톡으로 편하게 상담받으세요.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>포트폴리오 | 동기부여와 기회</title>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -34,7 +35,7 @@
         <a href="#services" class="hover:text-accent transition">서비스</a>
         <a href="#contact" class="hover:text-accent transition">상담</a>
       </div>
-      <button id="menu-btn" class="md:hidden text-2xl">&#9776;</button>
+      <button id="menu-btn" class="md:hidden text-2xl" aria-label="메뉴" aria-expanded="false">&#9776;</button>
     </div>
     <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
       <a href="#about" class="block py-2 hover:text-accent transition">소개</a>
@@ -55,7 +56,7 @@
   </section>
 
   <!-- About -->
-  <section id="about" class="py-24 bg-gray-50">
+  <section id="about" class="py-24 bg-gray-50 scroll-mt-20">
     <div class="max-w-4xl mx-auto px-6 text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-8">소개</h2>
       <p class="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
@@ -65,7 +66,7 @@
       </p>
     </div>
   </section>
-  <section id="services" class="py-24">
+  <section id="services" class="py-24 scroll-mt-20">
     <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-3xl md:text-4xl font-bold text-center mb-16">서비스</h2>
       <div class="grid md:grid-cols-3 gap-8">
@@ -91,14 +92,14 @@
     </div>
   </section>
   <!-- Contact -->
-  <section id="contact" class="py-24 bg-gray-50">
+  <section id="contact" class="py-24 bg-gray-50 scroll-mt-20">
     <div class="max-w-4xl mx-auto px-6 text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-6">지금 카카오톡으로 상담받기</h2>
       <p class="text-lg text-gray-600 mb-12">궁금한 점이 있으신가요? 카카오톡으로 편하게 문의하세요</p>
       <a href="https://pf.kakao.com/_YOUR_CHANNEL_ID" target="_blank" rel="noopener noreferrer"
          class="inline-flex items-center gap-3 bg-[#FEE500] text-[#3C1E1E] px-10 py-5 rounded-xl text-xl font-bold hover:bg-[#FDD800] transition shadow-lg">
         <svg class="w-8 h-8" viewBox="0 0 24 24" fill="#3C1E1E">
-          <path d="M12 3C6.48 3 2 6.58 2 11.03c0 2.76 1.81 5.19 4.58 6.65l-1.17 4.32 4.97-2.65c.53.05 1.07.08 1.62.08 5.52 0 10-3.58 10-8s-4.48-8-10-8v4.4c0 .24-.13.46-.35.58l-3.78 2.01.89-3.28c.06-.21-.01-.44-.18-.57C6.35 10.85 5.25 9.03 5.25 7.04c0-3.1 2.89-5.62 6.75-5.82V3z"/>
+          <path d="M12 2C6.48 2 2 5.82 2 10.5c0 2.82 1.64 5.33 4.21 6.86l-1.05 3.85c-.1.35.3.63.61.43l4.52-2.74c.56.07 1.13.1 1.71.1 5.52 0 10-3.82 10-8.5S17.52 2 12 2z"/>
         </svg>
         카카오톡 상담하기
       </a>
@@ -125,7 +126,10 @@
 
     // Mobile menu toggle
     document.getElementById('menu-btn').addEventListener('click', () => {
-      document.getElementById('mobile-menu').classList.toggle('hidden');
+      const menu = document.getElementById('mobile-menu');
+      const btn = document.getElementById('menu-btn');
+      menu.classList.toggle('hidden');
+      btn.setAttribute('aria-expanded', !menu.classList.contains('hidden'));
     });
 
     // Close mobile menu on link click
