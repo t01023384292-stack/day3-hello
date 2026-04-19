@@ -26,10 +26,50 @@
 </head>
 <body class="font-sans text-gray-900 bg-white">
 
-  <!-- Navigation -->
+  <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#hero" class="text-xl font-bold">포트폴리오</a>
+      <div class="hidden md:flex gap-8">
+        <a href="#about" class="hover:text-accent transition">소개</a>
+        <a href="#services" class="hover:text-accent transition">서비스</a>
+        <a href="#contact" class="hover:text-accent transition">상담</a>
+      </div>
+      <button id="menu-btn" class="md:hidden text-2xl">&#9776;</button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+      <a href="#about" class="block py-2 hover:text-accent transition">소개</a>
+      <a href="#services" class="block py-2 hover:text-accent transition">서비스</a>
+      <a href="#contact" class="block py-2 hover:text-accent transition">상담</a>
+    </div>
+  </nav>
   <!-- Hero + About -->
   <!-- Services -->
   <!-- Contact -->
 
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('bg-white', 'shadow-sm');
+        navbar.classList.remove('bg-transparent');
+      } else {
+        navbar.classList.remove('bg-white', 'shadow-sm');
+        navbar.classList.add('bg-transparent');
+      }
+    });
+
+    // Mobile menu toggle
+    document.getElementById('menu-btn').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.add('hidden');
+      });
+    });
+  </script>
 </body>
 </html>
